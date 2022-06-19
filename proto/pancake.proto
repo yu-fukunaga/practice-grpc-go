@@ -12,6 +12,23 @@ service PancakeBakerService {
   rpc Report(ReportRequest) returns (ReportResponse) {}
 }
 
+// Sub Schemas
+message Pancake {
+  enum Menu {
+    UNKNOWN = 0;
+    CLASSIC = 1;
+    BANANA_AND_WHIP = 2;
+    BACON_AND_CHEESE = 3;
+    MIX_BERRY = 4;
+    BAKED_MARSHMALLOW = 5;
+    SPICY_CURRY = 6;
+  }
+  string chef_name = 1;
+  Menu menu = 2;
+  float technical_score = 3;
+  google.protobuf.Timestamp created_at = 15;
+}
+
 message Report {
   message BakeCount {
     Pancake.Menu menu = 1;
@@ -20,6 +37,7 @@ message Report {
   repeated BakeCount bake_counts = 1;
 }
 
+// Requests and Responses
 message BakeRequest { Pancake.Menu menu = 1; }
 
 message BakeResponse { Pancake pancake = 1; }
