@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package pancake.maker;
+
+option go_package = "gen/api";
+
+import "google/protobuf/timestamp.proto";
+
+service PancakeBakerService {
+  rpc Bake(BakeRequest) returns (BakeResponse) {}
+
+  rpc Report(ReportRequest) returns (ReportResponse) {}
+}
+
+message Report {
+  message BakeCount {
+    Pancake.Menu menu = 1;
+    int32 count = 2;
+  }
+  repeated BakeCount bake_counts = 1;
+}
+
+message BakeRequest { Pancake.Menu menu = 1; }
+
+message BakeResponse { Pancake pancake = 1; }
+
+message ReportRequest {}
+
+message ReportResponse { Report report = 1; }
