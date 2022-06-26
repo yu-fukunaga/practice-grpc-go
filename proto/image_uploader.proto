@@ -1,0 +1,24 @@
+syntax = "proto3";
+package image.uploader;
+
+option go_package = "gen/proto";
+
+service ImageUploadService {
+  rpc Upload(stream ImageUploadRequest) returns (ImageUploadResponse) {}
+}
+
+message ImageUploadRequest {
+  // 初回リクエストではメタ情報を送る。二回目以降はチェンクドアップロード
+  oneof file {
+    FileMeta file_meta = 1;
+    bytes data = 2;
+  }
+  message FileMeta { string filename = 1; }
+}
+
+message ImageUploadResponse {
+  string uuid = 1;
+  int32 size = 2;
+  string content_type = 3;
+  string filename = 4;
+}
