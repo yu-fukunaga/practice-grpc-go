@@ -9,7 +9,7 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-	"pancake.maker/app/pancake_baker_server/handler"
+	"pancake.maker/app/server/pancake_baker_server/handler"
 	"pancake.maker/gen/proto"
 )
 
