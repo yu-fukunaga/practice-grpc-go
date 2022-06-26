@@ -1,7 +1,0 @@
-{
-  "protoc": {
-    "clang-format.language.proto.style": "google"
-  },
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "zxh404.vscode-proto3"
-}
