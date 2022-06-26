@@ -8,6 +8,7 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+	"google.golang.org/grpc/metadata"
 	"pancake.maker/gen/proto"
 )
 
@@ -23,13 +24,21 @@ func main() {
 		log.Fatalf("did not connect:")
 	}
 	defer conn.Close()
-	c := proto.NewPancakeBakerServiceClient(conn)
+
+	// Bearer token
+	md := metadata.New(map[string]string{"authorization": "barer test_token"})
+	ctx := metadata.NewOutgoingContext(context.Background(), md)
 
 	// Contact the server and print out its response.
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	client := proto.NewPancakeBakerServiceClient(conn)
+	ctx, cancel := context.WithTimeout(ctx, time.Second)
 	defer cancel()
-	r, err := c.Bake(ctx, &proto.BakeRequest{
+	r, err := client.Bake(ctx, &proto.BakeRequest{
 		Menu: proto.Pancake_BACON_AND_CHEESE,
 	})
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
 	log.Printf("Pancake: %s", r.GetPancake())
 }
