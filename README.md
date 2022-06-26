@@ -41,7 +41,7 @@ go run app/client/main.go
 # Development
 
 direnv is recommended.  
-If you use direnv.
+If you use direnv, run the following command.
 
 ```
 make env
