@@ -9,13 +9,13 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-	"pancake.maker/app/handler"
+	"pancake.maker/app/pancake_baker_server/handler"
 	"pancake.maker/gen/proto"
 )
 
-func main(){
+func main() {
 	port := 50051
-	lis, err := net.Listen("tcp",fmt.Sprintf(":%d",port))
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", port))
 	if err != nil {
 		log.Fatalf("failed to listen: %v\n", err)
 	}
@@ -25,19 +25,19 @@ func main(){
 		server,
 		handler.NewBakerHandler(),
 	)
-	reflection.Register(server)
+	reflection.Register(server) //required for grpc_cli
 
-	go func(){
-		log.Printf("start gRPC server port: %v\n",port)
+	go func() {
+		log.Printf("start gRPC server port: %v\n", port)
 		if err := server.Serve(lis); err != nil {
 			log.Fatalf("failed to serve: %v", err)
 		}
 	}()
 
-	quit :=make(chan os.Signal)
+	quit := make(chan os.Signal)
 	signal.Notify(quit, os.Interrupt)
 
-	<- quit
+	<-quit
 	log.Println("stopping gRPC server...")
 	server.GracefulStop()
 }
