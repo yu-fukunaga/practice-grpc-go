@@ -15,6 +15,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/reflection"
+	"google.golang.org/grpc/status"
 	"pancake.maker/app/server/pancake_baker/handler"
 	"pancake.maker/gen/proto"
 )
@@ -53,7 +54,7 @@ func main() {
 		}
 	}()
 
-	quit := make(chan os.Signal)
+	quit := make(chan os.Signal, 10) // bufferはてきとう
 	signal.Notify(quit, os.Interrupt)
 
 	<-quit
@@ -67,7 +68,9 @@ func auth(ctx context.Context) (context.Context, error) {
 		return nil, err
 	}
 	if token != "test_token" {
-		return nil, grpc.Errorf(codes.Unauthenticated, "invalid barer token")
+		return nil, status.Errorf(codes.Unauthenticated, "invalid barer token")
 	}
-	return context.WithValue(ctx, "UserName", "uyu"), nil
+	type ContextKey string
+	var ContextKey_UserName ContextKey = "UserName"
+	return context.WithValue(ctx, ContextKey_UserName, "uyu"), nil
 }
