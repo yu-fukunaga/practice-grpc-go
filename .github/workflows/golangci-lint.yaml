@@ -1,0 +1,32 @@
+name: golangci-lint
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+env:
+  GO_VERSION: "^1.18.3"
+jobs:
+  golangci:
+    name: lint
+    strategy:
+      matrix:
+        golangci-lint-version:
+          - v1.46.2
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ env.GO_VERSION }}
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          # Required: the version of golangci-lint is required and must be specified without patch version: we always use the latest patch version.
+          version: ${{ matrix.golangci-lint-version }}
+          skip-go-installation: true
+        timeout-minutes: 20
