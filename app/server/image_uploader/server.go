@@ -9,7 +9,7 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-	"pancake.maker/app/server/image_upload/handler"
+	"pancake.maker/app/server/image_uploader/handler"
 	"pancake.maker/gen/proto"
 )
 
@@ -21,7 +21,7 @@ func main() {
 	}
 	server := grpc.NewServer()
 
-	proto.RegisterImageUploadServiceServer(server, handler.NewImageUploadHandler())
+	proto.RegisterImageUploadServiceServer(server, handler.NewImageUploaderHandler())
 	reflection.Register(server)
 
 	go func() {
