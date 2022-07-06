@@ -8,35 +8,12 @@ This repository is for learning gRPC.
 
 # Quick Start
 
-- Start Server
+- [PancakeBakerService](./SERVICE_PANCAKE_BAKER.md)  
+  PancakeBakerService is simple gRPC service.
 
-```
-go run app/server/pancake_baker/main.go
-```
-
-### Method1. use grpc_cli
-
-- List all the services exposed at a given port
-  ```
-  grpc_cli ls localhost:50051
-  ```
-- List PancakeBakerService with details
-
-  ```
-  grpc_cli ls localhost:50051 pancake.maker.PancakeBakerService -l
-  ```
-
-- Call a unary method Send a rpc to a helloworld server at localhost:50051
-
-  ```
-  grpc_cli call localhost:50051 pancake.maker.PancakeBakerService.Bake 'menu: 1'
-  ```
-
-### Method2. start client
-
-```
-go run app/client/main.go
-```
+- [ImageUploaderService](./SERVICE_IMAGE_UPLOADER.md)  
+  ImageUploaderService is a client-side streaming service that sends image data to a server.
+  Return information on images uploaded to the server.
 
 # Development
 
