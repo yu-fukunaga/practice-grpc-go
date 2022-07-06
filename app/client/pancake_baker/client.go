@@ -33,12 +33,12 @@ func main() {
 	client := proto.NewPancakeBakerServiceClient(conn)
 	ctx, cancel := context.WithTimeout(ctx, time.Second)
 	defer cancel()
-	r, err := client.Bake(ctx, &proto.BakeRequest{
+	res, err := client.Bake(ctx, &proto.BakeRequest{
 		Menu: proto.Pancake_BACON_AND_CHEESE,
 	})
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
-	log.Printf("Pancake: %s", r.GetPancake())
+	log.Printf("Pancake: %s", res.GetPancake())
 }
