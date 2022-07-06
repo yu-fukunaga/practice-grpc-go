@@ -10,20 +10,20 @@ import (
 	"pancake.maker/gen/proto"
 )
 
-type ImageUploadHandler struct {
+type ImageUploaderHandler struct {
 	proto.UnimplementedImageUploadServiceServer
 	sync.Mutex
 	files map[string][]byte
 }
 
-func NewImageUploadHandler() *ImageUploadHandler {
-	return &ImageUploadHandler{
+func NewImageUploaderHandler() *ImageUploaderHandler {
+	return &ImageUploaderHandler{
 		files: make(map[string][]byte),
 	}
 }
 
 // Image Upload
-func (h *ImageUploadHandler) Upload(stream proto.ImageUploadService_UploadServer) error {
+func (h *ImageUploaderHandler) Upload(stream proto.ImageUploadService_UploadServer) error {
 	// 最初のリクエストを受け取る
 	req, err := stream.Recv()
 	if err != nil {
