@@ -1,10 +1,15 @@
 # About
 
 This repository is for learning gRPC.  
-.proto, server, and client are included in one repository.
+I'm studying with ["スターティング gRPC"](https://tatsu-zine.com/books/starting-grpc).  
+.proto, server, and client are included in this repository.
 
-- [gRPC official](https://grpc.io/docs/languages/go/quickstart/)
-- [grpc_cli](https://github.com/grpc/grpc/blob/master/doc/command_line_tool.md)
+# Reference
+
+- gRPC official  
+  https://grpc.io/docs/languages/go/quickstart/
+- grpc_cli  
+  https://github.com/grpc/grpc/blob/master/doc/command_line_tool.md
 
 # Quick Start
 
@@ -24,7 +29,7 @@ If you use direnv, run the following command.
 make env
 ```
 
-Install packages necessary for development.
+"setup" installs the packages needed for development.
 
 ```
 make setup
