@@ -8,7 +8,6 @@ service ImageUploadService {
 }
 
 message ImageUploadRequest {
-  // 初回リクエストではメタ情報を送る。二回目以降はチェンクドアップロード
   oneof file {
     FileMeta file_meta = 1;
     bytes data = 2;
