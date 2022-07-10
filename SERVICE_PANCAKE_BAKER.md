@@ -12,7 +12,7 @@ go run app/server/pancake_baker/server.go
 go run app/client/pancake_baker/client.go
 ```
 
-### Method1. use grpc_cli
+### grpc_cli
 
 - List all the services exposed at a given port
   ```
