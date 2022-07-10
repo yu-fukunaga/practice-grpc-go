@@ -7,10 +7,11 @@ import (
 	"os"
 	"os/signal"
 
+	"practice/app/server/image_uploader/handler"
+	"practice/gen/proto"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-	"pancake.maker/app/server/image_uploader/handler"
-	"pancake.maker/gen/proto"
 )
 
 func main() {

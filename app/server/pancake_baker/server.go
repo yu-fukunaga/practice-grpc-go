@@ -8,6 +8,9 @@ import (
 	"os"
 	"os/signal"
 
+	"practice/app/server/pancake_baker/handler"
+	"practice/gen/proto"
+
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpc_auth "github.com/grpc-ecosystem/go-grpc-middleware/auth"
 	grpc_zap "github.com/grpc-ecosystem/go-grpc-middleware/logging/zap"
@@ -16,8 +19,6 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/grpc/status"
-	"pancake.maker/app/server/pancake_baker/handler"
-	"pancake.maker/gen/proto"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module pancake.maker
+module practice
 
 go 1.18
 

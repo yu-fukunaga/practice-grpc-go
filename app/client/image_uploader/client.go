@@ -8,10 +8,11 @@ import (
 	"os"
 	"time"
 
+	"practice/gen/proto"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/metadata"
-	"pancake.maker/gen/proto"
 )
 
 var (

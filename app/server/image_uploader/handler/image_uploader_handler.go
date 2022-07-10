@@ -6,8 +6,9 @@ import (
 	"net/http"
 	"sync"
 
+	"practice/gen/proto"
+
 	"github.com/google/uuid"
-	"pancake.maker/gen/proto"
 )
 
 type ImageUploaderHandler struct {

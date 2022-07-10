@@ -6,10 +6,11 @@ import (
 	"sync"
 	"time"
 
+	"practice/gen/proto"
+
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"pancake.maker/gen/proto"
 )
 
 func init() {
