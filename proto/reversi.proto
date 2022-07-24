@@ -9,7 +9,6 @@ enum Color {
   BLACK = 2;
   WHITE = 3;
   WALL = 4;
-  NONE = 5;
 }
 
 message Player {
