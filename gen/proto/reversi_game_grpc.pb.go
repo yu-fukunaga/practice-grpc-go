@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.19.4
-// source: proto/reversi.proto
+// source: proto/reversi_game.proto
 
 package proto
 
@@ -133,5 +133,5 @@ var GameService_ServiceDesc = grpc.ServiceDesc{
 			ClientStreams: true,
 		},
 	},
-	Metadata: "proto/reversi.proto",
+	Metadata: "proto/reversi_game.proto",
 }
