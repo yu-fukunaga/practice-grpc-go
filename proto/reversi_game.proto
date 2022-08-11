@@ -3,18 +3,8 @@ package game;
 
 option go_package = "gen/proto";
 
-enum Color {
-  UNKNOWN = 0;
-  EMPTY = 1;
-  BLACK = 2;
-  WHITE = 3;
-  WALL = 4;
-}
-
-message Player {
-  int32 id = 1;
-  Color color = 2;
-}
+import "proto/reversi_player.proto";
+import "proto/reversi_color.proto";
 
 service GameService {
   rpc Play(stream PlayRequest) returns (stream PlayResponse) {}
@@ -23,31 +13,23 @@ service GameService {
 message PlayRequest {
   int32 room_id = 1;
   Player player = 2;
-  oneof action {
-    StartAction start = 3;
-    MoveAction move = 4;
-  }
+
+  oneof action { StartAction start = 3; }
 
   message StartAction {}
   message MoveAction { Move move = 1; }
 }
 
 message PlayResponse {
-  oneof event {
-    WaitingEvent waiting = 1;
-    ReadyEvent ready = 2;
-    MoveEvent move = 3;
-    FinishEvent finished = 4;
-  }
-
+  oneof event { WaitingEvent waiting = 1; }
   message WaitingEvent {}
   message ReadyEvent {}
   message MoveEvent {
-    Player Player = 1;
+    Player player = 1;
     Move move = 2;
     Board board = 3;
   }
-  message FinishEvent {
+  message FinishedEvent {
     Color winner = 1;
     Board board = 2;
   }
