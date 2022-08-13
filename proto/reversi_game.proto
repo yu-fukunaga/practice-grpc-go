@@ -14,14 +14,23 @@ message PlayRequest {
   int32 room_id = 1;
   Player player = 2;
 
-  oneof action { StartAction start = 3; }
+  oneof action {
+    StartAction start = 3;
+    MoveAction move = 4;
+  }
 
   message StartAction {}
   message MoveAction { Move move = 1; }
 }
 
 message PlayResponse {
-  oneof event { WaitingEvent waiting = 1; }
+  oneof event {
+    WaitingEvent waiting = 1;
+    ReadyEvent ready = 2;
+    MoveEvent move = 3;
+    FinishedEvent finished = 4;
+  }
+
   message WaitingEvent {}
   message ReadyEvent {}
   message MoveEvent {
