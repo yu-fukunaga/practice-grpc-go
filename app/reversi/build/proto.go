@@ -7,8 +7,9 @@ import (
 
 func ToPBRoom(r *game.Room) *proto.Room {
 	return &proto.Room{
-		Id:   r.ID,
-		Host: ToPBPlayer(r.Host),
+		Id:    r.ID,
+		Host:  ToPBPlayer(r.Host),
+		Guest: ToPBPlayer(r.Guest),
 	}
 }
 
