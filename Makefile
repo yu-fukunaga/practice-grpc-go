@@ -16,6 +16,7 @@ protoc-gen:
 				--go-grpc_out gen/. \
 				--go-grpc_opt paths=source_relative \
 				proto/*.proto
+# --go_out フラグで、コンパイラに Go のソースファイルを書き込む場所を 指定します。
 
 .PHONY: lint
 lint:
