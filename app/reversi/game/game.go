@@ -3,8 +3,8 @@ package game
 import "fmt"
 
 type Game struct {
-	Board      *Board
-	isStarted  bool
+	Board *Board
+	// isStarted  bool
 	isFinished bool
 	me         Color
 }
@@ -16,11 +16,11 @@ func NewGame(me Color) *Game {
 	}
 }
 
-func (g *Game) MoveStone(x int32, y int32, c Color) (isFinished bool, error error) {
+func (g *Game) MoveStone(x int32, y int32, c Color) (isFinished bool, err error) {
 	if g.isFinished {
 		return true, nil
 	}
-	err := g.Board.PutStone(x, y, c)
+	err = g.Board.PutStone(x, y, c)
 	if err != nil {
 		return false, err
 	}
@@ -56,7 +56,7 @@ func (g *Game) Display(me Color) {
 		fmt.Printf("You: %v\n", me.ToColorStr())
 	}
 
-	fmt.Print(" |")
+	fmt.Print("  |")
 	rs := []rune("ABCDEFGH")
 	for i, r := range rs {
 		fmt.Printf("%v", string(r))
@@ -65,18 +65,18 @@ func (g *Game) Display(me Color) {
 		}
 	}
 	fmt.Print("\n")
-	fmt.Println("----------------------")
+	fmt.Println("  ----------------------")
 
 	for j := 1; j < 9; j++ {
 		fmt.Printf("%d", j)
 		fmt.Print(" |")
 		for i := 1; i < 9; i++ {
-			fmt.Print(g.Board.Cells[i][j])
+			fmt.Print((g.Board.Cells[i][j].ToColorStr()))
 			fmt.Print(" |")
 		}
 		fmt.Print("\n")
 	}
-	fmt.Println("----------------------")
+	fmt.Println("  ----------------------")
 
 	black, white, empty := g.Board.CountScore()
 	fmt.Printf("Score: BLACK=%d, White=%d REST=%d\n", black, white, empty)

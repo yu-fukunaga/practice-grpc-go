@@ -121,7 +121,7 @@ func (b *Board) CountScore() (black int, white int, empty int) {
 			case White:
 				white++
 			case Empty:
-				black++
+				empty++
 			default:
 			}
 		}
