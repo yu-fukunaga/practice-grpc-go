@@ -3,13 +3,13 @@
 - Start Server
 
 ```
-go run app/server/image_uploader/server.go
+go run app/grpc/server/image_uploader/server.go
 ```
 
 - Start Client
 
 ```
-go run app/client/image_uploader/client.go -file_path=<image_path>
+go run app/grpc/client/image_uploader/client.go -file_path=<image_path>
 ```
 
 ### grpc_cli

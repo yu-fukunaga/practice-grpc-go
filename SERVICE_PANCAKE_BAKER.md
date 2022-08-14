@@ -3,13 +3,13 @@
 - Start Server
 
 ```
-go run app/server/pancake_baker/server.go
+go run app/grpc/server/pancake_baker/server.go
 ```
 
 - Start Client
 
 ```
-go run app/client/pancake_baker/client.go
+go run app/grpc/client/pancake_baker/client.go
 ```
 
 ### grpc_cli

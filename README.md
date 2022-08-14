@@ -20,6 +20,9 @@ I'm studying with ["スターティング gRPC"](https://tatsu-zine.com/books/st
   ImageUploaderService is a client-side streaming service that sends image data to a server.
   Return information on images uploaded to the server.
 
+- [ReversiService](./SERVICE_REVERSI.md)  
+  ReversiService is a bidirectional streaming service that allows you to play reversi between two clients.
+
 # Development
 
 direnv is recommended.  
