@@ -7,7 +7,7 @@ import (
 	"os"
 	"os/signal"
 
-	"practice/app/server/image_uploader/handler"
+	"practice/app/grpc/server/image_uploader/handler"
 	"practice/gen/proto"
 
 	"google.golang.org/grpc"

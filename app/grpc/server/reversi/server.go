@@ -6,7 +6,7 @@ import (
 	"net"
 	"os"
 	"os/signal"
-	"practice/app/server/reversi/handler"
+	"practice/app/grpc/server/reversi/handler"
 	"practice/gen/proto"
 
 	"google.golang.org/grpc"

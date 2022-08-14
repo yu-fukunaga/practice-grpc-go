@@ -2,7 +2,7 @@ package main
 
 import (
 	"os"
-	client "practice/app/client/reversi"
+	client "practice/app/grpc/client/reversi"
 )
 
 func main() {

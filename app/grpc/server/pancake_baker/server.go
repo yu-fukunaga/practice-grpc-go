@@ -8,7 +8,7 @@ import (
 	"os"
 	"os/signal"
 
-	"practice/app/server/pancake_baker/handler"
+	"practice/app/grpc/server/pancake_baker/handler"
 	"practice/gen/proto"
 
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
